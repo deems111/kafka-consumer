@@ -22,10 +22,8 @@ Other
    * spring.datasource.url
    * spring.datasource.username
    * spring.datasource.password
-3) Check Application Port in application.properties (use only PostgreSQL, tested on PostgreSQL 15, not Postgres 11 and earlier - not supported):
-   * spring.datasource.url
-   * spring.datasource.username
-   * spring.datasource.password
+3) Check Application Port in application.properties:
+   * server.port
 
 *- Create topic:
 

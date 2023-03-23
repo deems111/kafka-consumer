@@ -17,10 +17,10 @@ public class AppTest {
         return dto;
     }
 
-    public WordData getEntity() {
-        var wd = new WordData();
-        wd.setWord(DEFAULT_WORD);
-        wd.setId(DEFAULT_ID);
-        return wd;
+    public WordDto getDto2() {
+        var dto = new WordDto();
+        dto.setWord(DEFAULT_WORD + 0);
+        dto.setId(DEFAULT_ID);
+        return dto;
     }
 }
