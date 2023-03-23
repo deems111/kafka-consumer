@@ -14,7 +14,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@ToString(callSuper = true)
+@ToString
 @Table(name = "test_word_data")
 public class WordData {
 
@@ -23,6 +23,7 @@ public class WordData {
     private String word;
     private LocalDateTime created;
 
+    //TODO - create basic entity with columns Id, created, modified
     @PrePersist
     public void create() {
         this.created = LocalDateTime.now();

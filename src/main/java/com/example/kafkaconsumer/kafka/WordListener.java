@@ -18,6 +18,7 @@ import org.springframework.stereotype.Component;
 public class WordListener {
     private final WordService wordService;
 
+    //TODO - multi group support with @KafkaHandler + define @PartitionOffset / Topic Partition
     @KafkaListener(topics = "${kafka.topic.name}", autoStartup = "${kafka.consumer.autoStartup}")
     public void listener(WordDto data) {
         var id = data.getId();
@@ -25,6 +26,7 @@ public class WordListener {
         try {
             wordService.save(data);
         } catch (DuplicateException ex) {
+            //TODO - handle exception, add other exceptions
             log.error("Duplicate Exception message with id = " + id);
         }
     }

@@ -9,10 +9,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class AppConfig {
     @Bean
+    @Primary
+    //TODO - mapper for tests + profiles prod / test
     public ObjectMapper mapper() {
         return new ObjectMapper()
                 .setSerializationInclusion(JsonInclude.Include.NON_NULL)

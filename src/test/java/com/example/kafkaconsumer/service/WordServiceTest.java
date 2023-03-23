@@ -47,6 +47,5 @@ public class WordServiceTest extends AppTest {
     public void testDuplicateSaving() {
         wordService.save(getDto());
         assertThrows(DuplicateException.class, () -> wordService.save(getDto2()));
-
     }
 }
