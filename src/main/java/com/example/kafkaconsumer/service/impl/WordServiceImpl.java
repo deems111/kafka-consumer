@@ -26,7 +26,9 @@ public class WordServiceImpl implements WordService {
     public void save(WordDto data) throws DuplicateException {
         var id = data.getId();
         if (repository.findById(data.getId()).isPresent()) {
-            throw new DuplicateException("Duplicate Id = " + data.getId());
+            var message = "Duplicate Id = " + data.getId();
+            log.error("Error while saving Message: " + message);
+            throw new DuplicateException(message);
         }
         var result = repository.save(mapper.toEntity(data));
         log.info("Data saved " + result);

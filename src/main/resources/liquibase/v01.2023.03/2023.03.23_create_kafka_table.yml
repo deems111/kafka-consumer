@@ -22,3 +22,5 @@ databaseChangeLog:
               - column:
                   name: created
                   type: timestamp
+                  constraints:
+                    nullable: false
