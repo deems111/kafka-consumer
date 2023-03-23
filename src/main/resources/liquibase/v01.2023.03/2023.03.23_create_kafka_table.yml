@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: create tables for storing kafka messages
+      author: deemsy
+      changes:
+        - createTable:
+            tableName: test_word_data
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  constraints:
+                    primaryKey: true
+                    defaultValue: gen_random_uuid()
+                    nullable: false
+                    unique: true
+              - column:
+                  name: word
+                  type: varchar(128)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created
+                  type: timestamp
