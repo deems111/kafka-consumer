@@ -4,6 +4,7 @@ import com.example.kafkaconsumer.AppTest;
 import com.example.kafkaconsumer.exception.DuplicateException;
 import com.example.kafkaconsumer.repository.WordDataRepository;
 import lombok.SneakyThrows;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -47,5 +48,10 @@ public class WordServiceTest extends AppTest {
     public void testDuplicateSaving() {
         wordService.save(getDto());
         assertThrows(DuplicateException.class, () -> wordService.save(getDto2()));
+    }
+
+    @AfterEach
+    public void clear(){
+        wordDataRepository.deleteByIdIs(DEFAULT_ID);
     }
 }
