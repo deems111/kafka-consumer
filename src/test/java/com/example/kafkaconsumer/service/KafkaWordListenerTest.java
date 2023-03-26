@@ -27,17 +27,19 @@ public class KafkaWordListenerTest extends AppTest {
 
 
     @Test
-    @DisplayName("Test Word Listener and Saving in Db")
+    @DisplayName("Test Word Listener Call and Saving in Db")
     public void testWordListener() {
         var dto = getDto();
-        var now = LocalDateTime.now();
+        var before = LocalDateTime.now();
         wordListener.listener(dto);
 
         var result = wordDataRepository.findById(DEFAULT_ID).get();
+        var now = LocalDateTime.now();
 
         assertEquals(result.getId(), DEFAULT_ID);
         assertEquals(result.getWord(), DEFAULT_WORD);
-        assertTrue(result.getCreated().isAfter(now));
+        assertTrue(result.getCreated().isAfter(before));
+        assertTrue(result.getCreated().isBefore(now));
     }
 
     @AfterEach
