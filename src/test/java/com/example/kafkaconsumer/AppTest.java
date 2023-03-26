@@ -1,7 +1,6 @@
 package com.example.kafkaconsumer;
 
 import com.example.kafkaconsumer.data.dto.WordDto;
-import com.example.kafkaconsumer.data.entity.WordData;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static com.example.kafkaconsumer.util.Utility.DEFAULT_ID;
