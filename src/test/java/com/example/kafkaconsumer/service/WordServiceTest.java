@@ -31,7 +31,7 @@ public class WordServiceTest extends AppTest {
     public void testSaving() {
         var count = wordDataRepository.findAll().size();
         assertTrue(wordDataRepository.findById(DEFAULT_ID).isEmpty());
-        wordService.save(getDto());
+        wordService.process(getDto());
         var results = wordDataRepository.findAll().size();
         var result = wordDataRepository.findById(DEFAULT_ID).get();
         assertEquals(count + 1, results);
@@ -46,8 +46,8 @@ public class WordServiceTest extends AppTest {
     @DisplayName("Check saving duplicate Word data in Db")
     @Order(2)
     public void testDuplicateSaving() {
-        wordService.save(getDto());
-        assertThrows(DuplicateException.class, () -> wordService.save(getDto2()));
+        wordService.process(getDto());
+        assertThrows(DuplicateException.class, () -> wordService.process(getDto2()));
     }
 
     @AfterEach

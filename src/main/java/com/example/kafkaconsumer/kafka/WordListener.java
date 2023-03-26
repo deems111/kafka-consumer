@@ -20,14 +20,10 @@ public class WordListener {
 
     //TODO - multi group support with @KafkaHandler + define @PartitionOffset / Topic Partition
     @KafkaListener(topics = "${kafka.topic.name}", autoStartup = "${kafka.consumer.autoStartup}")
-    public void listener(WordDto data) {
-        var id = data.getId();
+    public void listener(WordDto dto) {
+        var id = dto.getId();
         log.info("Start processing message with id = " + id);
-        try {
-            wordService.save(data);
-        } catch (DuplicateException ex) {
-            //TODO - handle exception, add other exceptions
-            log.error("Duplicate Exception message with id = " + id);
-        }
+        wordService.process(dto);
+        log.info("Finished processing message with id = " + id);
     }
 }
